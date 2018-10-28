@@ -4,6 +4,9 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import TodoListIndex from '../pages/ArrayKeys/ArrayKeyIndex';
 import TodoListId from '../pages/ArrayKeys/ArrayKeyId';
 
+import RouteHome from '../pages/Route'
+import RouteMoreList from '../pages/Route/RouteMoreList'
+
 import DriveList from '../pages/Drive/DriveList';
 
 import App from '../pages/ArrayKey'
@@ -18,6 +21,9 @@ class Interceptors extends React.Component {
           <Route exact path='/' component={TodoListIndex} />
 
           <Route path='/keyid' component={TodoListId} />
+
+          <Route exact path='/route' component={RouteHome} />
+          <Route path='/route/more' component={RouteMoreList} />
 
           <Route path='/drive' component={DriveList} />
 

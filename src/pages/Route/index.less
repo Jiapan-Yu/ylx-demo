@@ -1,0 +1,119 @@
+@import '../../utils/color.less';
+
+.route-wrap {
+  .local-hot-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 0;
+    font-size: 18px;
+    .title-head {
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+    .title-left, .more {
+      min-width: 60px;
+      vertical-align: middle;
+    }
+    .left {
+      display: inline-block;
+      width: 38px;
+      height: 1px;
+      margin-right: 8px;
+      margin-bottom: 6px;
+      background-color: darken(@ColorA,  30%);
+    }
+    .right {
+      display: inline-block;
+      width: 38px;
+      height: 1px;
+      margin-left: 8px;      
+      margin-bottom: 6px;
+      background-color: darken(@ColorA, 30%);
+    }
+    .more {
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      color: darken(@ColorA, 30%);
+      svg {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .local-hot-wrap {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    div.local-hot {
+      display: inline-block;
+      width: 30%;
+      .img-container {        
+        width: 100%;
+        height: 95px;
+        overflow: hidden;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        img {
+          max-width: 100%;
+          height: 95px;
+        }
+      }
+      .location {        
+        color: red;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .local-speciality-head {
+    background-color: #fff;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 30px;
+    height: 30px;
+    .title-left, .more {
+      min-width: 60px;
+    }
+    .title-head {
+      flex: 1;
+      text-align: center;
+    }
+    .left {
+      display: inline-block;
+      width: 38px;
+      height: 1px;
+      margin-right: 8px;
+      margin-bottom: 6px;
+      background-color: darken(@ColorA,  30%);
+    }
+    .right {
+      display: inline-block;
+      width: 38px;
+      height: 1px;
+      margin-left: 8px;      
+      margin-bottom: 6px;
+      background-color: darken(@ColorA, 30%);
+    }
+    .more {
+      font-weight: normal;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      color: darken(@ColorA, 30%);
+      svg {
+        vertical-align: middle;
+      }
+    }
+  }
+}
