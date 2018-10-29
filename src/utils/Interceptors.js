@@ -7,6 +7,9 @@ import TodoListId from '../pages/ArrayKeys/ArrayKeyId';
 import RouteHome from '../pages/Route'
 import RouteMoreList from '../pages/Route/RouteMoreList'
 
+import Ticket from '../pages/Ticket'
+import TicketList from '../pages/Ticket/TicketList'
+
 import DriveList from '../pages/Drive/DriveList';
 
 import App from '../pages/ArrayKey'
@@ -25,7 +28,10 @@ class Interceptors extends React.Component {
           <Route exact path='/route' component={RouteHome} />
           <Route path='/route/more' component={RouteMoreList} />
 
-          <Route path='/drive' component={DriveList} />
+          <Route exact path='/ticket' component={Ticket} />
+          <Route path='/ticket/list' component={TicketList} />
+
+          <Route path='/drive/list' component={DriveList} />
 
           <Route path='/key' component={App} />
         </Switch>
