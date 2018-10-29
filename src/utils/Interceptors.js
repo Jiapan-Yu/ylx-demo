@@ -31,7 +31,7 @@ class Interceptors extends React.Component {
           <Route exact path='/ticket' component={Ticket} />
           <Route path='/ticket/list' component={TicketList} />
 
-          <Route path='/drive' component={DriveList} />
+          <Route path='/drive/list' component={DriveList} />
 
           <Route path='/key' component={App} />
         </Switch>

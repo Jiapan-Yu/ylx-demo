@@ -1,0 +1,57 @@
+@import '../../utils/color.less';
+.skeleton-wrap {
+  height: 90px;
+  width: 90%;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 15px;
+  box-shadow: 5px 5px 5px @shadow;
+  border-radius: 5px;
+  text-align: center;
+  .skeleton-head, .skeleton-title, .skeleton-content {
+    background: rgb(194, 207, 214);
+  }
+  
+  .skeleton-head {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+  }
+  
+  .skeleton-body {
+    margin-left: 90px;
+    height: 100%;
+    padding-top: 10px;
+  }
+  
+  .skeleton-title {
+    width: 95%;
+    height: 40%;
+    transform-origin: left;
+  }
+  
+  .skeleton-content {
+    width: 60%;
+    height: 25%;
+    margin-top: 10px;
+    transform-origin: left;
+  }
+
+  .skeleton-content, .skeleton-title, .skeleton-head {
+    background: #fff;
+    background-size: 20rem 20rem;
+    background-image: linear-gradient(to right,rgba(0,0,0,.08) 0,rgba(0,0,0,.15) 15%,rgba(0,0,0,.08) 30%);
+    animation: skeleton-stretch 1s linear infinite;
+  }
+}
+
+@keyframes skeleton-stretch {
+  from {
+    background-position: 0 0 ;
+  }
+  to {
+      background-position: 20rem 0;
+  }
+}
