@@ -7,10 +7,16 @@
   padding: 10px 0px;
   width: 100%;
   background-color: #fff;
-  div img {
-    max-width: 95px;
+  > div:first-child{
+    width: 95px;
     height: 95px;
     margin-left: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    img {
+      max-width: 95px;
+      height: 95px;
+    }
   }
   .description {
     width: 50%;
@@ -38,6 +44,10 @@
     .symbol, .price {
       color: @priceColor;
       font-size: 20px;
+      padding: 0;
+    }
+    .symbol {
+      margin-right: -4px;
     }
     .tag {
       color: darken(@ColorA, 50%);
