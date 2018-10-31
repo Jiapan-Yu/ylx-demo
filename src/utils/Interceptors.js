@@ -12,6 +12,8 @@ import TicketList from '../pages/Ticket/TicketList'
 
 import DriveList from '../pages/Drive/DriveList';
 
+import SearchBarExample from '../pages/SearchBar';
+
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
 
@@ -32,6 +34,8 @@ class Interceptors extends React.Component {
           <Route path='/ticket/list' component={TicketList} />
 
           <Route path='/drive/list' component={DriveList} />
+
+          <Route path='/search' component={SearchBarExample} />
 
           <Route path='/key' component={App} />
         </Switch>
