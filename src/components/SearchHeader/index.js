@@ -25,7 +25,7 @@ class SearchHeader extends Component {
 						</div>
 					}
 					<div className="right">
-						<SearchBar cancelText='搜索' onFocus={this.handleChange} className='input' placeholder='目的地/主题/关键字' />
+						<SearchBar cancelText='搜索' onCancel={this.handleChange} className='input' placeholder='目的地/主题/关键字' />
 					</div>
 				</div>
 			</div >

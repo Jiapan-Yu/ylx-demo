@@ -9,6 +9,7 @@ import RouteMoreList from '../pages/Route/RouteMoreList'
 
 import Ticket from '../pages/Ticket'
 import TicketList from '../pages/Ticket/TicketList'
+import TicketSearch from '../pages/Ticket/TicketSearch'
 
 import DriveList from '../pages/Drive/DriveList';
 
@@ -32,6 +33,7 @@ class Interceptors extends React.Component {
 
           <Route exact path='/ticket' component={Ticket} />
           <Route path='/ticket/list' component={TicketList} />
+          <Route exact path='/ticket/search' component={TicketSearch} />
 
           <Route path='/drive/list' component={DriveList} />
 
