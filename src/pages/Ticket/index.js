@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Toast } from 'antd-mobile'
 import TicketItem from './TicketList/TicketItem'
 import { queryTicketList } from '../../api/ticket'
+import SearchHeader from '../../components/SearchHeader'
 import './index.less'
 
 export default class Ticket extends Component {
@@ -44,11 +45,17 @@ export default class Ticket extends Component {
 		this.props.history.push('/ticket/list')
 	}
 
+	handleFocus = () => {
+		this.props.history.push('/ticket/search')
+		return
+	}
+
 	render() {
 		const { data_hot, data_speciality } = this.state
 
 		return (
 			<div className="feature-item-wrap">
+				<SearchHeader onChange={this.handleFocus}/>
 				<div className="local-hot-head">
 					<div className='title-left'></div>
 					<div className='title-head'>
