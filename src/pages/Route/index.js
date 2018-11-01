@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Tabs, WhiteSpace } from 'antd-mobile'
-import { StickyContainer, Sticky } from 'react-sticky'
+import { Icon, Tabs } from 'antd-mobile'
 import RouteMoreItem from './RouteMoreList/RouteMoreItem'
 import { getRoute } from '../../api/route'
 import sanya from '../../images/route/sanya.jpg'
@@ -18,12 +17,6 @@ for (let i = 0; i < chinaHotCity.length; i++) {
 		location: chinaHotCity[i],
 		imgUrl: img[i]
 	})
-}
-
-function renderTabBar(props) {
-	return (<Sticky>
-		{({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
-	</Sticky>)
 }
 
 const tabs = [
@@ -102,28 +95,27 @@ export default class RouteHome extends Component {
 					}
 				</div>
 
-				<StickyContainer>
-					<Tabs tabs={tabs}
-						initalPage={'t2'}
-						renderTabBar={renderTabBar}
-					>
-						<div>
-							{
-								aroundData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-							}
-						</div>
-						<div>
-							{
-								countryData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-							}
-						</div>
-						<div>
-							{
-								overseasData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-							}
-						</div>
-					</Tabs>
-				</StickyContainer>
+				<Tabs tabs={tabs}
+					initalPage={1}
+					onChange={(tab, index) => { console.log('onChange', index, tab); }}
+					onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+				>
+					<div>
+						{
+							aroundData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+						}
+					</div>
+					<div>
+						{
+							countryData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+						}
+					</div>
+					<div>
+						{
+							overseasData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+						}
+					</div>
+				</Tabs>
 			</div>
 		)
 	}
