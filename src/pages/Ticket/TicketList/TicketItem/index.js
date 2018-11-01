@@ -10,16 +10,18 @@ class TicketItem extends Component {
 				<div>
 					<img src={imgUrl || require('../../../../images/banner/default.png')} alt="" />
 				</div>
-				<div className="description">
+				<div className="main">
 					<div className="title">{viewName}</div>
-					<div className="view-count">浏览{pageViews}次</div>
-					<div className="sell-count">已售{saleVolume}份</div>
-					<div className="location">{provinceName} {cityName}</div>
-				</div>
-				<div className="price-box">
-					<span className="symbol">￥</span>
-					<span className="price">{salePrice}</span>
-					<span className="tag">起</span>
+					<div className="description">						
+						<div className="view-count">浏览{pageViews}次</div>
+						<div className="sell-count">已售{saleVolume}份</div>
+						<div className="location">{provinceName} {cityName}</div>
+					</div>
+					<div className="price-box">
+						<span className="symbol">￥</span>
+						<span className="price">{salePrice}</span>
+						<span className="tag">起</span>
+					</div>
 				</div>
 			</div>
 		)
