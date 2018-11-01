@@ -14,8 +14,7 @@ export default class Ticket extends Component {
 	componentDidMount() {
 		document.title = '门票首页'
 		Toast.loading('正在加载中...', 0)
-		queryTicketList({
-			searchInput: '欢乐',
+		queryTicketList({			
 			cityName: '武汉',
 			reorder: 7
 		}).then(res => {
@@ -24,8 +23,7 @@ export default class Ticket extends Component {
 				data_hot: data
 			})
 		})
-		queryTicketList({
-			searchInput: '欢乐',
+		queryTicketList({			
 			cityName: '武汉',
 			reorder: 8
 		}).then(res => {

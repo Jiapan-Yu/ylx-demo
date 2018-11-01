@@ -12,7 +12,9 @@ export default class TicketList extends Component {
 
 	componentDidMount() {
 		document.title = '门票列表'
-		queryTicketList().then(res => {
+		queryTicketList({
+			cityName: '武汉'
+		}).then(res => {
 			const { data } = res.data
 			this.setState({
 				data
