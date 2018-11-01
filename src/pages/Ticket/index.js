@@ -55,7 +55,7 @@ export default class Ticket extends Component {
 
 		return (
 			<div className="feature-item-wrap">
-				<SearchHeader onChange={this.handleFocus}/>
+				<SearchHeader onFocus={this.handleFocus}/>
 				<div className="local-hot-head">
 					<div className='title-left'></div>
 					<div className='title-head'>
