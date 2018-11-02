@@ -3,12 +3,20 @@ import './index.less'
 
 class TicketItem extends Component {
 
+	constructor(props) {
+		super(props)
+		this.state = {
+			imgUrl: this.props.bean.imgUrl
+		}
+	}
+
 	render() {
-		const { imgUrl, viewName, pageViews, saleVolume, provinceName, cityName, salePrice } = this.props.bean
+		const { imgUrl } = this.state
+		const { viewName, pageViews, saleVolume, provinceName, cityName, salePrice } = this.props.bean
 		return (
 			<div className="local-speciality-wrap">
 				<div>
-					<img src={imgUrl || require('../../../../images/banner/default.png')} alt="" />
+					<img src={imgUrl || require('../../../../images/banner/default.png')} alt="" onError={() => this.setState({ imgUrl: require('../../../../images/banner/default.png') })} />
 				</div>
 				<div className="main">
 					<div className="title">{viewName}</div>

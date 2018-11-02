@@ -29,7 +29,6 @@ export default class TicketList extends Component {
 			cityName: '武汉'
 		}).then(res => {
 			const { data } = res.data
-			console.log(data)
 			this.rData = data
 			this.setState({
 				dataSource: this.state.dataSource.cloneWithRows(data),
