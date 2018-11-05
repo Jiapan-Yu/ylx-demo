@@ -39,8 +39,8 @@ export default class RouteHome extends Component {
 			pageNum: 1,
 			type: '1',
 			startCity: '武汉'
-		}).then(res => {			
-			const { data } = res.data			
+		}).then(res => {
+			const { data } = res.data
 			this.setState({
 				aroundData: data.pageList
 			})
@@ -48,8 +48,8 @@ export default class RouteHome extends Component {
 		getRoute({
 			pageNum: 1,
 			type: '2'
-		}).then(res => {			
-			const { data } = res.data			
+		}).then(res => {
+			const { data } = res.data
 			this.setState({
 				countryData: data.pageList
 			})
@@ -58,8 +58,8 @@ export default class RouteHome extends Component {
 			pageNum: 1,
 			type: '3',
 			startCity: '武汉'
-		}).then(res => {			
-			const { data } = res.data			
+		}).then(res => {
+			const { data } = res.data
 			this.setState({
 				overseasData: data.pageList
 			})
