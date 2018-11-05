@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Icon, Tabs } from 'antd-mobile'
 import RouteMoreItem from './RouteMoreList/RouteMoreItem'
 import { getRoute } from '../../api/route'
+import Skeleton from '../../components/Skeleton'
 import sanya from '../../images/route/sanya.jpg'
 import lijiang from '../../images/route/lijiang.jpg'
 import xiamen from '../../images/route/xiamen.jpg'
@@ -27,7 +28,8 @@ const tabs = [
 
 export default class RouteHome extends Component {
 	state = {
-		dataSource: []
+		dataSource: [],
+		isLoading: true
 	}
 
 	componentDidMount() {
@@ -37,6 +39,7 @@ export default class RouteHome extends Component {
 	}
 
 	init = (type) => {
+		this.setState({ isLoading: true })
 		getRoute({
 			pageNum: 1,
 			type: type,
@@ -44,6 +47,7 @@ export default class RouteHome extends Component {
 		}).then(res => {
 			const { data } = res.data
 			this.setState({
+				isLoading: false,
 				dataSource: data.pageList
 			})
 		})
@@ -54,7 +58,7 @@ export default class RouteHome extends Component {
 	}
 
 	render() {
-		const { dataSource } = this.state
+		const { dataSource, isLoading } = this.state
 		return (
 			<div className="route-wrap">
 				<div className="local-hot-head">
@@ -80,14 +84,24 @@ export default class RouteHome extends Component {
 
 				<Tabs tabs={tabs}
 					initalPage={1}
-					onChange={(tab, index) => { this.init(index+1); }}
-					onTabClick={(tab, index) => { this.init(index+1); }}
+					onChange={(tab, index) => { this.init(index + 1); }}
+					onTabClick={(tab, index) => { this.init(index + 1); }}
 				>
-					<div>
-						{
-							dataSource.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-						}
-					</div>
+					{
+						isLoading ?
+							<Fragment>
+								<Skeleton />
+								<Skeleton />
+								<Skeleton />
+							</Fragment>
+							:
+							<div>
+								{
+									dataSource.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+								}
+							</div>
+					}
+
 				</Tabs>
 			</div>
 		)
