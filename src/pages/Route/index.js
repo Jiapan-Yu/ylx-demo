@@ -27,41 +27,24 @@ const tabs = [
 
 export default class RouteHome extends Component {
 	state = {
-		aroundData: [],
-		countryData: [],
-		overseasData: []
+		dataSource: []
 	}
 
 	componentDidMount() {
 		document.title = '线路'
 
+		this.init(1)
+	}
+
+	init = (type) => {
 		getRoute({
 			pageNum: 1,
-			type: '1',
-			startCity: '武汉'
+			type: type,
+			startCity: type === 1 ? '武汉' : ''
 		}).then(res => {
 			const { data } = res.data
 			this.setState({
-				aroundData: data.pageList
-			})
-		});
-		getRoute({
-			pageNum: 1,
-			type: '2'
-		}).then(res => {
-			const { data } = res.data
-			this.setState({
-				countryData: data.pageList
-			})
-		});
-		getRoute({
-			pageNum: 1,
-			type: '3',
-			startCity: '武汉'
-		}).then(res => {
-			const { data } = res.data
-			this.setState({
-				overseasData: data.pageList
+				dataSource: data.pageList
 			})
 		})
 	}
@@ -71,14 +54,14 @@ export default class RouteHome extends Component {
 	}
 
 	render() {
-		const { aroundData, countryData, overseasData } = this.state
+		const { dataSource } = this.state
 		return (
 			<div className="route-wrap">
 				<div className="local-hot-head">
 					<div className='title-left'></div>
 					<div className='title-head'>
 						<span className="left"></span>
-						热门推荐
+						热门城市
 						<span className="right"></span>
 					</div>
 					<div className="more">
@@ -97,22 +80,12 @@ export default class RouteHome extends Component {
 
 				<Tabs tabs={tabs}
 					initalPage={1}
-					onChange={(tab, index) => { console.log('onChange', index, tab); }}
-					onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+					onChange={(tab, index) => { this.init(index+1); }}
+					onTabClick={(tab, index) => { this.init(index+1); }}
 				>
 					<div>
 						{
-							aroundData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-						}
-					</div>
-					<div>
-						{
-							countryData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
-						}
-					</div>
-					<div>
-						{
-							overseasData.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+							dataSource.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
 						}
 					</div>
 				</Tabs>
