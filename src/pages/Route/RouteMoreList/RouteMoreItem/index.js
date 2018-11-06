@@ -14,7 +14,7 @@ class RouteMoreItem extends Component {
 				</div>
 				<div className="description">
 					<div className="title">{firstClassBrandName}</div>
-					<div className="detail" dangerouslySetInnerHTML={{ __html: shortText}} ></div>
+					<div className="detail" dangerouslySetInnerHTML={{ __html: goodsName}} ></div>
 					<span className="symbol">￥</span>
 					<span className="price">{routePrice}</span>
 					<span className="tag">起</span>

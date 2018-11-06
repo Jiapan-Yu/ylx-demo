@@ -35,6 +35,13 @@
     .detail {
       color: darken(@ColorA, 50%);
       margin-bottom: 10px;
+      display: -webkit-box;
+      overflow: hidden;
+      box-orient: vertical;
+      -webkit-line-clamp: 2;
+      /* autoprefixer: off */
+      -webkit-box-orient: vertical;
+      /* autoprefixer: on */
     }
     .symbol, .price, .tag {
       color: @priceColor;
