@@ -97,7 +97,7 @@ export default class RouteHome extends Component {
 							:
 							<div>
 								{
-									dataSource.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} />)
+									dataSource.map(item => <RouteMoreItem key={item.goodsRouteId} bean={item} onClick={() => this.props.history.push('/route/more')} />)
 								}
 							</div>
 					}
