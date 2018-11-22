@@ -16,6 +16,7 @@ import DriveList from '../pages/Drive/DriveList';
 import SearchBarExample from '../pages/SearchBar';
 
 import Timer from '../pages/Observer'
+import TodoList from '../pages/Observers/index.js'
 
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
@@ -42,6 +43,7 @@ class Interceptors extends React.Component {
           <Route path='/search' component={SearchBarExample} />
 
           <Route path='/timer' component={Timer} />
+          <Route path='/todo' component={TodoList} />
 
           <Route path='/key' component={App} />
         </Switch>
