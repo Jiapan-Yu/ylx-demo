@@ -11,20 +11,29 @@ export default class TodoList extends React.Component {
       e.target.value = ''
     }
   }
+
   filter(e) {
     this.props.todoStore.filter = e.target.value
   }
+
+  toggleComplete(todo) {
+    todo.complete = !todo.complete
+  }
+
   render() {
-    const { filter, filteredTodos } = this.props.todoStore
+    const { clearComplete, filter, filteredTodos } = this.props.todoStore
 
     const todoLis = filteredTodos.map(todo => (
-      <li>{todo}</li>
+      <li key={todo.id}>
+        <input type='checkbox' onChange={this.toggleComplete.bind(this, todo)} value={todo.complete} checked={todo.complete} />{todo.value}
+      </li>
     ))
     return <div>
       <h1>todos</h1>
-      <input className="create" onKeyPress={this.createNew.bind(this)} />
+      <input className='create' onKeyPress={this.createNew.bind(this)} />
       <input className='filter' value={filter} onChange={this.filter.bind(this)} />
       <ul>{todoLis}</ul>
+      <a onClick={clearComplete}>Clear Complete</a>
     </div>
   }
 }
