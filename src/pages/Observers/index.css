@@ -17,6 +17,10 @@ body {
   font-weight: 300;
 }
 
+div ul li {
+  list-style-type: disc;
+}
+
 input {
   border-radius: 5px;
   padding: 5px;
