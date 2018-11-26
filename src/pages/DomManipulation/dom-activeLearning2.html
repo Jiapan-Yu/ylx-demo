@@ -34,16 +34,16 @@
     var listRef = document.querySelector('ul');
     var inputRef = document.querySelector('input');
     var buttonRef = document.querySelector('button');
-
-    var buttonEle;
+    
     buttonRef.onclick = function () {
       var inputValue = inputRef.value;
       inputRef.value = '';
+      
+      inputRef.focus();
 
       var listEle = document.createElement('li');
       var spanEle = document.createElement('span');
       buttonEle = document.createElement('button');
-
       listEle.appendChild(spanEle);
       listEle.appendChild(buttonEle);
 
@@ -57,8 +57,6 @@
       buttonEle.onclick = function () {
         listRef.removeChild(listEle);
       }
-      
-      inputRef.focus();
     }
   </script>
 </body>
