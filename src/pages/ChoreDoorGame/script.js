@@ -1,3 +1,10 @@
+let body = document.querySelector('body');
+const name = "<img src='x' onerror='alert(1)'>";
+body.innerHTML = name;
+
+console.log(body);
+console.log(body.toString());
+
 let doorImage1 = document.getElementById('door1');
 let doorImage2 = document.getElementById('door2');
 let doorImage3 = document.getElementById('door3');
@@ -80,7 +87,7 @@ doorImage3.onclick = () => {
 };
 
 startButton.onclick = () => {
-  // location.reload();
+  // location.reload();  // window.location.reload();
   if(!currentlyPlaying) {
     startRound();
   }
