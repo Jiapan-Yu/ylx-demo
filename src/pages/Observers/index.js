@@ -30,8 +30,8 @@ export default class TodoList extends React.Component {
     ))
     return <div>
       <h1>todos</h1>
-      <input className='create' onKeyPress={this.createNew.bind(this)} />
-      <input className='filter' value={filter} onChange={this.filter.bind(this)} />
+      <input className='create' placeholder='add item' onKeyPress={this.createNew.bind(this)} />
+      <input className='filter' placeholder='filter' value={filter} onChange={this.filter.bind(this)} />
       <ul>{todoLis}</ul>
       <a onClick={clearComplete}>Clear Complete</a>
     </div>

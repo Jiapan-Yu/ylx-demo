@@ -7,6 +7,8 @@ import TodoListId from '../pages/ArrayKeys/ArrayKeyId';
 import RouteHome from '../pages/Route'
 import RouteMoreList from '../pages/Route/RouteMoreList'
 
+import Currying from '../pages/Currying'
+
 import Ticket from '../pages/Ticket'
 import TicketList from '../pages/Ticket/TicketList'
 import TicketSearch from '../pages/Ticket/TicketSearch'
@@ -33,6 +35,8 @@ class Interceptors extends React.Component {
 
           <Route exact path='/route' component={RouteHome} />
           <Route path='/route/more' component={RouteMoreList} />
+
+          <Route path='/currying' component={Currying} />
 
           <Route exact path='/ticket' component={Ticket} />
           <Route path='/ticket/list' component={TicketList} />
