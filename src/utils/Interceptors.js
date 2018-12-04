@@ -20,6 +20,8 @@ import SearchBarExample from '../pages/SearchBar';
 import Timer from '../pages/Observer'
 import TodoList from '../pages/Observers/index.js'
 
+import Todo from '../pages/Todo/todo'
+
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
 
@@ -47,7 +49,9 @@ class Interceptors extends React.Component {
           <Route path='/search' component={SearchBarExample} />
 
           <Route path='/timer' component={Timer} />
-          <Route path='/todo' component={TodoList} />
+          <Route path='/todolist' component={TodoList} />
+
+          <Route path='/todo' component={Todo} />
 
           <Route path='/key' component={App} />
         </Switch>
