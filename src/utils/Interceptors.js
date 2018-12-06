@@ -22,6 +22,8 @@ import TodoList from '../pages/Observers/index.js'
 
 import Todo from '../pages/Todo/todo'
 
+import Pomodoro from '../pages/Pomodoro'
+
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
 
@@ -52,6 +54,8 @@ class Interceptors extends React.Component {
           <Route path='/todolist' component={TodoList} />
 
           <Route path='/todo' component={Todo} />
+
+          <Route path='/pomodoro' component={Pomodoro} />
 
           <Route path='/key' component={App} />
         </Switch>
