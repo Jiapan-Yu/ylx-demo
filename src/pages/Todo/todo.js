@@ -13,26 +13,18 @@ class Todo extends Component {
   }
 
   componentWillMount() {
-    // Setting default tasks...
-    this.setState({
-      items: [
-        {
-          id: uuidv4(),
-          task: 'Pay the rent',
-          completed: false
-        },
-        {
-          id: uuidv4(),
-          task: 'Go to the gym',
-          completed: false
-        },
-        {
-          id: uuidv4(),
-          task: 'Do my homework',
-          completed: false
-        }
-      ]
-    });
+    const tasksArr = localStorage.getItem('tasks').split(',');
+
+    const items = [];
+    for(let i = 0; i < tasksArr.length; i++) {
+      items.push({
+        id: uuidv4(),
+        task: tasksArr[i],
+        completed: false
+      });
+    }
+
+    this.setState({items});
   }
 
   handleOnChange = e => {
@@ -61,7 +53,14 @@ class Todo extends Component {
             completed: false
           }
         ]
-      })
+      }, () => {
+        const tasksArr = [];
+        for(let i = 0; i < this.state.items.length; i++) {
+          const taskValue = this.state.items[i].task;
+          tasksArr.push(taskValue);
+        }
+        localStorage.setItem('tasks', tasksArr.join());
+      });
     }
   }
 
