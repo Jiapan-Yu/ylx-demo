@@ -13,18 +13,17 @@ class Todo extends Component {
   }
 
   componentWillMount() {
-    const tasksArr = localStorage.getItem('tasks').split(',');
+    if (localStorage.getItem('tasks')) {
+      const tasksArr = localStorage.getItem('tasks').split('&');
 
-    const items = [];
-    for(let i = 0; i < tasksArr.length; i++) {
-      items.push({
-        id: uuidv4(),
-        task: tasksArr[i],
-        completed: false
-      });
+      const items = [];
+      for (let i = 0; i < tasksArr.length; i++) {
+        const obj = JSON.parse(tasksArr[i])
+        items.push(obj);
+      }
+
+      this.setState({ items });
     }
-
-    this.setState({items});
   }
 
   handleOnChange = e => {
@@ -55,11 +54,11 @@ class Todo extends Component {
         ]
       }, () => {
         const tasksArr = [];
-        for(let i = 0; i < this.state.items.length; i++) {
-          const taskValue = this.state.items[i].task;
-          tasksArr.push(taskValue);
+        for (let i = 0; i < this.state.items.length; i++) {
+          let task = JSON.stringify(this.state.items[i], { encode: false })
+          tasksArr.push(task);
         }
-        localStorage.setItem('tasks', tasksArr.join());
+        localStorage.setItem('tasks', tasksArr.join("&"));
       });
     }
   }
@@ -79,6 +78,13 @@ class Todo extends Component {
         ...this.state.items,
         ...foundTask
       ]
+    }, () => {
+      const tasksArr = [];
+      for (let i = 0; i < this.state.items.length; i++) {
+        let task = JSON.stringify(this.state.items[i], { encode: false })
+        tasksArr.push(task);
+      }
+      localStorage.setItem('tasks', tasksArr.join("&"));
     });
   }
 
@@ -91,6 +97,13 @@ class Todo extends Component {
     // Updating items state...
     this.setState({
       items: filteredTasks
+    }, () => {
+      const tasksArr = [];
+      for (let i = 0; i < this.state.items.length; i++) {
+        let task = JSON.stringify(this.state.items[i], { encode: false })
+        tasksArr.push(task);
+      }
+      localStorage.setItem('tasks', tasksArr.join("&"));
     });
   }
 
@@ -100,13 +113,13 @@ class Todo extends Component {
         <h1>New Task:</h1>
 
         <form onSubmit={this.handleOnSubmit}>
-          <input 
+          <input
             value={this.state.task}
             onChange={this.handleOnChange}
           />
         </form>
 
-        <List 
+        <List
           items={this.state.items}
           markAsCompleted={this.markAsCompleted}
           removeTask={this.removeTask}
