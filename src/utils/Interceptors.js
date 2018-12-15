@@ -23,6 +23,7 @@ import TodoList from '../pages/Observers/index.js'
 import Todo from '../pages/Todo/todo'
 import Pomodoro from '../pages/Pomodoro'
 import Coins from '../pages/CryptoCoins'
+import SimpleListOfNotes from '../pages/SimpleListOfNotes/App.js'
 
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
@@ -56,6 +57,7 @@ class Interceptors extends React.Component {
           <Route path='/todo' component={Todo} />
           <Route path='/pomodoro' component={Pomodoro} />
           <Route path='/coins' component={Coins} />
+          <Route path='/simplelistofnotes' component={SimpleListOfNotes} />
 
           <Route path='/key' component={App} />
         </Switch>
