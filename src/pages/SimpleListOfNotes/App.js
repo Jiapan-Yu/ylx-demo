@@ -3,7 +3,6 @@ import Notes from './index.js'
 
 // This is our fake data...
 import { notes1, notes2 } from './data.js'
-import './App.css'
 
 class SimpleListOfNotes extends Component {
   constructor(props) {
@@ -31,6 +30,12 @@ class SimpleListOfNotes extends Component {
         <Notes notes={this.state.notes} />
       </div>
     );
+  }
+
+  componentWillUnmount() {
+    console.log('Hasta la vista baby!')
+    document.body.style = 'background: black;'
+    document.getElementById('unmountMessage').style.color = 'white'
   }
 }
 

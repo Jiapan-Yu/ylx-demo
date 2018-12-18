@@ -25,7 +25,7 @@ class Notes extends Component {
     }
   }
 
-  render() { 
+  render() {
     const { notes } = this.props
 
     return (

@@ -12,6 +12,21 @@ const store = {
   timerData,
   todoStore
 }
+
+const unmountButton = document.getElementById('unmount')
+
+function unmount() {
+  ReactDOM.unmountComponentAtNode(
+    document.getElementById('root')
+  )
+  document.getElementById('unmountMessage').style.display = 'block'
+  unmountButton.remove()
+}
+
+unmountButton.addEventListener('click', unmount)
+
+document.getElementById('unmountMessage').style.display = 'none'
+
 ReactDOM.render(
   <AppContainer>
     <Provider {...store}>
