@@ -26,6 +26,8 @@ import Coins from '../pages/CryptoCoins'
 import SimpleListOfNotes from '../pages/SimpleListOfNotes/App.js'
 import Animation from '../pages/BasicAnimation'
 
+import MobX from '../pages/MobX'
+
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
 
@@ -60,6 +62,8 @@ class Interceptors extends React.Component {
           <Route path='/coins' component={Coins} />
           <Route path='/simplelistofnotes' component={SimpleListOfNotes} />
           <Route path='/animation' component={Animation} />
+
+          <Route path='/mobx' component={MobX} />
 
           <Route path='/key' component={App} />
         </Switch>
