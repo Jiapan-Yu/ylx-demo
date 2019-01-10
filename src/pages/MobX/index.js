@@ -9,11 +9,11 @@ class Cart {
   @computed get description() {
     switch (this.items.length) {
       case 0:
-        return `There are no items in the cart ${this.modified}`
+        return `There are no items in the cart`
       case 1:
-        return `There is one item in the cart ${this.modified}`
+        return `There is one item in the cart`
       default:
-        return `There are ${this.items.length} items in the cart ${this.modified}`
+        return `There are ${this.items.length} items in the cart`
     }
   }
 }
