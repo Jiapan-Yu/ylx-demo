@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import { observable, computed, autorun, action } from 'mobx'
 
-function countdown() {
-  let i
-  console.log("Countdown:")
-  for(i=5; i>=0; i--) { // i need to be declared here
-    setTimeout(function() {
-      console.log(i===0 ? "GO!" : i)
-    }, (5-i)*1000)
-  }
+
+function countdown(seconds) {  
+  return new Promise(function(resolve, reject) {
+    for(let i=seconds; i>=0; i--) {
+      setTimeout(function() {
+        if(i===13) return reject(new Error("DEFINITELY NOT COUNTING THAT"))
+        if(i>0) console.log(i + '...')
+        else resolve(console.log("GO!"))
+      }, (seconds-i)*1000)
+      console.log(seconds-i)
+    }
+  })
 }
 
-countdown()
+countdown(13).then(
+  function() {
+    console.log("countdown completed successfully")
+  },
+  function(err) {
+    console.log("countdown experienced an error: " + err.message)
+  }
+)
 
 class MobX extends Component {
   state = {
