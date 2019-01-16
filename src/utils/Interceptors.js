@@ -28,6 +28,8 @@ import Animation from '../pages/BasicAnimation'
 
 import MobX from '../pages/MobX'
 
+import ParentComponent from '../pages/ParentCallChild'
+
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey'
 
@@ -64,6 +66,8 @@ class Interceptors extends React.Component {
           <Route path='/animation' component={Animation} />
 
           <Route path='/mobx' component={MobX} />
+
+          <Route path='/parentcomponent' component={ParentComponent} />
 
           <Route path='/key' component={App} />
         </Switch>
