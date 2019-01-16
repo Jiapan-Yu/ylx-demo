@@ -1,4 +1,4 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 
 class TimerData {
   @observable secondsPassed = 0
@@ -6,8 +6,8 @@ class TimerData {
 
 let timerData = new TimerData()
 
-setInterval(() => {
+setInterval(action(() => {
   timerData.secondsPassed++;
-}, 1000);
+}), 1000);
 
 export default timerData
