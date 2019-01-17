@@ -20,41 +20,36 @@ class Cart {
         return `There are ${this.items.length} items in the cart`
     }
   }
+
+  @action.bound addItem(name, quantity) {
+    const item = this.items.find(x => x.name === name)
+    if (item) {
+      item.quantity += 1
+    } else {
+      this.items.push({ name, quantity })
+    }
+  
+    this.modified = new Date()
+  }
+
+  @action.bound removeItem(name){
+    const item = this.items.find(x => x.name === name)
+    if (item) {
+      item.quantity -= 1;
+  
+      if (item.quantity <= 0) {
+        this.items.removeItem(item)
+      }
+  
+      this.modified = new Date()
+    }
+  }
 }
 
 let cart = new Cart()
 
 autorun(() => {
   console.log(`${cart.description} ${cart.modified}`)
-})
-
-// Create the actions
-const incrementCount = action(() => {
-  cart.items.push(cart.itemCount++)
-})
-
-const addItem = action((name, quantity) => {
-  const item = cart.items.find(x => x.name === name)
-  if (item) {
-    item.quantity += 1
-  } else {
-    cart.items.push({ name, quantity })
-  }
-
-  cart.modified = new Date()
-})
-
-const removeItem = action(name => {
-  const item = cart.items.find(x => x.name === name)
-  if (item) {
-    item.quantity -= 1;
-
-    if (item.quantity <= 0) {
-      cart.items.removeItem(item)
-    }
-
-    cart.modified = new Date()
-  }
 })
 
 // Modifying observables outside of an action
@@ -66,9 +61,9 @@ test()
 
 // Invoke actions
 console.log("Before timeout: " + new Date())
-setTimeout(addItem, 1000, 'balloons', 2)
-setTimeout(addItem, 2000, 'paint', 2)
-setTimeout(removeItem, 3000, 'paint')
+setTimeout(cart.addItem, 1000, 'balloons', 2)
+setTimeout(cart.addItem, 2000, 'paint', 2)
+setTimeout(cart.removeItem, 3000, 'paint')
 
 class MobX extends Component {
   state = {
