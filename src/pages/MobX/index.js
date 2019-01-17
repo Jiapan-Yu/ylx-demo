@@ -1,31 +1,52 @@
 import React, { Component } from 'react'
-import { observable, action, autorun } from 'mobx'
+import { observable, action, reaction } from 'mobx'
 
 class Cart {
   @observable modified = new Date()
-  @observable.shallow items = []
+  @observable items = []
 
-  cancelAutorun = null
+  cancelPriceTracker = null
+  
+  trackPriceChangeForItem(name) {
+    if (this.cancelPriceTracker) {
+      this.cancelPriceTracker()
+    }
 
-  constructor() {
-    this.cancelAutorun = autorun(() => {
-      console.log(`Items in Cart: ${this.items.length}`)
-    })
+    // 1. Reaction to track price changes
+    this.cancelPriceTracker = reaction(
+      () => {
+        const item = this.items.find(x => x.name === name)
+        return item ? item.price : null
+      },
+      price => {
+        console.log(`Price changed for ${name}: ${price !== null ? price : 0}`)
+      }
+    )
   }
 
-  @action addItem(name, quantity) {
-    this.items.push({ name, quantity })
+  @action addItem(name, price) {
+    this.items.push({ name, price })
     this.modified = new Date()
+  }
+
+  @action changePrice(name, price) {
+    const item = this.items.find(x => x.name === name)
+    if (item) {
+      item.price = price
+    }
   }
 }
 
-let cart = new Cart()
-// 1. Cancel the autorun side-effect
-cart.cancelAutorun()
+const cart = new Cart()
 
-// 2. The following will not cause any logging to happen
-cart.addItem('Power Cable', 1)
-cart.addItem('Shoes', 1)
+cart.addItem('Shoes', 20)
+
+// 2. Now track price for "Shoes"
+cart.trackPriceChangeForItem('Shoes')
+
+// 3. Change the price
+cart.changePrice('shoes', 100)
+cart.changePrice('Shoes', 50)
 
 class MobX extends Component {
   state = {
