@@ -1,52 +1,16 @@
 import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 
-class Cart {
-  @observable modified = new Date()
-  @observable items = []
+const item = observable.box(30)
 
-  cancelPriceTracker = null
-  
-  trackPriceChangeForItem(name) {
-    if (this.cancelPriceTracker) {
-      this.cancelPriceTracker()
-    }
+// 1. Create the component with observer
+const ItemComponent = observer(() => {
+  // 2. Read an observable: item
+  return <h1>Current Item Value = {item.get()}</h1>
+})
 
-    // 1. Reaction to track price changes
-    this.cancelPriceTracker = reaction(
-      () => {
-        const item = this.items.find(x => x.name === name)
-        return item ? item.price : null
-      },
-      price => {
-        console.log(`Price changed for ${name}: ${price !== null ? price : 0}`)
-      }
-    )
-  }
-
-  @action addItem(name, price) {
-    this.items.push({ name, price })
-    this.modified = new Date()
-  }
-
-  @action changePrice(name, price) {
-    const item = this.items.find(x => x.name === name)
-    if (item) {
-      item.price = price
-    }
-  }
-}
-
-const cart = new Cart()
-
-cart.addItem('Shoes', 20)
-
-// 2. Now track price for "Shoes"
-cart.trackPriceChangeForItem('Shoes')
-
-// 3. Change the price
-cart.changePrice('shoes', 100)
-cart.changePrice('Shoes', 50)
+setTimeout(() => item.set(50), 2000)
 
 class MobX extends Component {
   state = {
@@ -58,7 +22,10 @@ class MobX extends Component {
   }
   render() {
     return (
-      <p>mobx learning</p>
+      <div>
+        <p>mobx learning</p>
+        <ItemComponent />
+      </div>
     );
   }
 }
