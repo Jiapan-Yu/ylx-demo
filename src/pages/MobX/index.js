@@ -1,69 +1,31 @@
 import React, { Component } from 'react'
-import { observable, computed, autorun, action, configure } from 'mobx'
-
-configure({
-  enforceActions: 'always'  // "never" "observed" "always"
-})
+import { observable, action, autorun } from 'mobx'
 
 class Cart {
-  @observable itemCount = 0;
-  @observable.shallow items = [];
-  @observable modified = new Date();
+  @observable modified = new Date()
+  @observable.shallow items = []
 
-  @computed get description() {
-    switch (this.items.length) {
-      case 0:
-        return `There are no items in the cart`
-      case 1:
-        return `There is one item in the cart`
-      default:
-        return `There are ${this.items.length} items in the cart`
-    }
+  cancelAutorun = null
+
+  constructor() {
+    this.cancelAutorun = autorun(() => {
+      console.log(`Items in Cart: ${this.items.length}`)
+    })
   }
 
-  @action.bound addItem(name, quantity) {
-    const item = this.items.find(x => x.name === name)
-    if (item) {
-      item.quantity += 1
-    } else {
-      this.items.push({ name, quantity })
-    }
-  
+  @action addItem(name, quantity) {
+    this.items.push({ name, quantity })
     this.modified = new Date()
-  }
-
-  @action.bound removeItem(name){
-    const item = this.items.find(x => x.name === name)
-    if (item) {
-      item.quantity -= 1;
-  
-      if (item.quantity <= 0) {
-        this.items.removeItem(item)
-      }
-  
-      this.modified = new Date()
-    }
   }
 }
 
 let cart = new Cart()
+// 1. Cancel the autorun side-effect
+cart.cancelAutorun()
 
-autorun(() => {
-  console.log(`${cart.description} ${cart.modified}`)
-})
-
-// Modifying observables outside of an action
-const test = action(() => {
-  cart.items.push({ name: 'test', quantity: 1 })
-  cart.modified = new Date()
-})
-test()
-
-// Invoke actions
-console.log("Before timeout: " + new Date())
-setTimeout(cart.addItem, 1000, 'balloons', 2)
-setTimeout(cart.addItem, 2000, 'paint', 2)
-setTimeout(cart.removeItem, 3000, 'paint')
+// 2. The following will not cause any logging to happen
+cart.addItem('Power Cable', 1)
+cart.addItem('Shoes', 1)
 
 class MobX extends Component {
   state = {
