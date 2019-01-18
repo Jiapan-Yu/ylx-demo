@@ -1,4 +1,4 @@
-/* import React, { Component } from 'react'
+import React, { Component } from 'react'
 import Chart from './Chart.js'
 import './index.less'
 
@@ -33,11 +33,10 @@ class C3chart extends Component {
     return ( 
       <div className="App">
         <Chart columns={this.columns} chartType={this.state.chartType} />
-
         <p>
-          Chart Type
+          {/* Chart Type
           <button onClick={this.setBarChart} >Bar</button>
-          <button onClick={this.setLineChart} >Line</button>
+          <button onClick={this.setLineChart} >Line</button> */}
         </p>
       </div>
     );
@@ -45,4 +44,3 @@ class C3chart extends Component {
 }
  
 export default C3chart;
- */
