@@ -6,17 +6,14 @@ class Inventory {
 
   cancelTracker = null
 
-  trackAvailability(name) {
-    // 1. Establish the tracker with when
-    this.cancelTracker = when(
+  async trackAvailability(name) {
+    // 1. Wait for availability
+    await when(
       () => {
         const item = this.items.find(x => x.name === name)
-        return item ? item.quantity > 0 :false
-      },
-      () => {
-        console.log(`${name} is now available`)
-      }
-    )
+        return item ? item.quantity > 0 : false
+      })
+    console.log(`${name} is now available`)
   }
 
   @action addItem(name, quantity) {
