@@ -1,16 +1,44 @@
 import React, { Component } from 'react'
-import { observer } from 'mobx-react'
-import { observable, action, reaction } from 'mobx'
+import { observable, action, reaction, when } from 'mobx'
 
-const item = observable.box(30)
+class Inventory {
+  @observable items = []
 
-// 1. Create the component with observer
-const ItemComponent = observer(() => {
-  // 2. Read an observable: item
-  return <h1>Current Item Value = {item.get()}</h1>
-})
+  cancelTracker = null
 
-setTimeout(() => item.set(50), 2000)
+  trackAvailability(name) {
+    // 1. Establish the tracker with when
+    this.cancelTracker = when(
+      () => {
+        const item = this.items.find(x => x.name === name)
+        return item ? item.quantity > 0 :false
+      },
+      () => {
+        console.log(`${name} is now available`)
+      }
+    )
+  }
+
+  @action addItem(name, quantity) {
+    const item = this.items.find(x => x.name === name)
+    if (item) {
+      item.quantity += quantity
+    } else {
+      this.items.push({ name, quantity })
+    }
+  }
+}
+
+const inventory = new Inventory()
+
+inventory.addItem('Shoes', 0)
+inventory.trackAvailability('Shoes')
+
+// 2. Add two pairs
+inventory.addItem('Shoes', 2)
+
+// 3. Add one more pair
+inventory.addItem('Shoes', 1)
 
 class MobX extends Component {
   state = {
@@ -24,7 +52,6 @@ class MobX extends Component {
     return (
       <div>
         <p>mobx learning</p>
-        <ItemComponent />
       </div>
     );
   }
