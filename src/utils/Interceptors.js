@@ -20,10 +20,12 @@ import SearchBarExample from '../pages/SearchBar';
 import Timer from '../pages/Observer'
 import TodoList from '../pages/Observers/index.js'
 
+// from react_cookbook
 import Todo from '../pages/Todo/todo'
 import Pomodoro from '../pages/Pomodoro'
 import Coins from '../pages/CryptoCoins'
 import SimpleListOfNotes from '../pages/SimpleListOfNotes/App.js'
+import Chart from '../pages/C3/Chart.js'
 import Animation from '../pages/BasicAnimation'
 
 import MobX from '../pages/MobX'
@@ -63,6 +65,7 @@ class Interceptors extends React.Component {
           <Route path='/pomodoro' component={Pomodoro} />
           <Route path='/coins' component={Coins} />
           <Route path='/simplelistofnotes' component={SimpleListOfNotes} />
+          <Route path='/c3chart' component={Chart} />
           <Route path='/animation' component={Animation} />
 
           <Route path='/mobx' component={MobX} />
