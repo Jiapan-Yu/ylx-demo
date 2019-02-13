@@ -29,6 +29,7 @@ import C3chart from '../pages/C3'
 import Animation from '../pages/BasicAnimation'
 import PureComponent from '../pages/PureComponent'
 import Xss from '../pages/XSS'
+import BindingMethods from '../pages/BindingMethods'
 
 import MobX from '../pages/MobX'
 
@@ -71,6 +72,7 @@ class Interceptors extends React.Component {
           <Route path='/animation' component={Animation} />
           <Route path='/purecomponent' component={PureComponent} />
           <Route path='/xss' component={Xss} />
+          <Route path='/bindingmethods' component={BindingMethods} />
 
           <Route path='/mobx' component={MobX} />
 
