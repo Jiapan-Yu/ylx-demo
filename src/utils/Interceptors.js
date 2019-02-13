@@ -28,6 +28,7 @@ import SimpleListOfNotes from '../pages/SimpleListOfNotes/App.js'
 import C3chart from '../pages/C3'
 import Animation from '../pages/BasicAnimation'
 import PureComponent from '../pages/PureComponent'
+import Xss from '../pages/XSS'
 
 import MobX from '../pages/MobX'
 
@@ -69,6 +70,7 @@ class Interceptors extends React.Component {
           <Route path='/c3chart' component={C3chart} />
           <Route path='/animation' component={Animation} />
           <Route path='/purecomponent' component={PureComponent} />
+          <Route path='/xss' component={Xss} />
 
           <Route path='/mobx' component={MobX} />
 
