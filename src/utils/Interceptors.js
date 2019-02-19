@@ -30,6 +30,7 @@ import Animation from '../pages/BasicAnimation'
 import PureComponent from '../pages/PureComponent'
 import Xss from '../pages/XSS'
 import BindingMethods from '../pages/BindingMethods'
+import Person from '../pages/CreatingFormEle'
 
 import MobX from '../pages/MobX'
 
@@ -73,6 +74,7 @@ class Interceptors extends React.Component {
           <Route path='/purecomponent' component={PureComponent} />
           <Route path='/xss' component={Xss} />
           <Route path='/bindingmethods' component={BindingMethods} />
+          <Route path='/person' component={Person} />
 
           <Route path='/mobx' component={MobX} />
 
