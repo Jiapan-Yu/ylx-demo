@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
+import Popup from 'react-popup'
 
 import TodoListIndex from '../pages/ArrayKeys/ArrayKeyIndex';
 import TodoListId from '../pages/ArrayKeys/ArrayKeyId';
@@ -82,6 +83,7 @@ class Interceptors extends React.Component {
 
           <Route path='/key' component={App} />
         </Switch>
+        <Popup />
       </div>
     );
   }
