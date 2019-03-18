@@ -1,5 +1,6 @@
 import React, { Component } from 'react' // eslint-disable-line
 import axios from 'axios'
+import Helmet from 'react-helmet'
 
 class AxiosTest extends Component {
 
@@ -14,16 +15,19 @@ class AxiosTest extends Component {
       responseType: 'json',
       data: 'a string'
     })
-    .then(response => {
-      console.log(response) // eslint-disable-line
-    })
+      .then(response => {
+        console.log(response) // eslint-disable-line
+      })
   }
 
-  render() { 
-    return ( 
-      <h4>axios test page</h4>
+  render() {
+    return (
+      <div>
+        <Helmet title="axios test page" />
+        <h4>axios test page</h4>
+      </div>
     )
   }
 }
- 
+
 export default AxiosTest
