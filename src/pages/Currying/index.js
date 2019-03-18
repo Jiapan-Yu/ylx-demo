@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line
 import Header from './header';
 import Content from './content';
 import Footer from './footer'
 
 export default class Currying extends React.Component {
 	handleClick = (param) => (e) => {
-		console.log('Event', e);
-		console.log('Parameter: ', param);
+		console.log('Event', e); // eslint-disable-line no-console
+		console.log('Parameter: ', param); // eslint-disable-line no-console
 	}
 	render() {
 		return (

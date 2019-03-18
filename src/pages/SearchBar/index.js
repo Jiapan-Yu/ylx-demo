@@ -42,11 +42,11 @@ export default class SearchBarExample extends React.Component {
       <SearchBar
         value={this.state.value}
         placeholder="Search"
-        onSubmit={value => console.log(value, 'onSubmit')}
-        onClear={value => console.log(value, 'onClear')}
-        onFocus={() => console.log('onFocus')}
-        onBlur={() => console.log('onBlur')}
-        onCancel={() => console.log('onCancel')}
+        onSubmit={value => console.log(value, 'onSubmit')} // eslint-disable-line no-console
+        onClear={value => console.log(value, 'onClear')} // eslint-disable-line no-console
+        onFocus={() => console.log('onFocus')} // eslint-disable-line no-console
+        onBlur={() => console.log('onBlur')} // eslint-disable-line no-console
+        onCancel={() => console.log('onCancel')} // eslint-disable-line no-console
         showCancelButton
         onChange={this.onChange}
       />

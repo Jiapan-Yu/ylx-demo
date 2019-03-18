@@ -19,7 +19,6 @@ export default class ToDoListIndex extends React.Component {
   constructor() {
     super();
     const date = new Date();
-    console.log(date);
     const todoCounter = 1;
     this.state = {
       todoCounter: todoCounter,
@@ -81,8 +80,6 @@ export default class ToDoListIndex extends React.Component {
   }
 
   render() {
-    const description = "&lt;春节&gt;老挝北部丛林、金三角、清迈、拜县自驾9日游（驾车出国门、昆明集散、全程领队领航车护航、随行车护航等等等等"
-		const shortDescription = description.length > 45 ? `${description.substring(0, 45)}...` : description
     return (
       <div>
         <code>key=index</code>

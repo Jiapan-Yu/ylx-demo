@@ -33,7 +33,6 @@ export default class App extends React.Component {
 const Item = (props) => {
 	return (
 		<li>
-			{console.log(props)}
 			<label>{props.children}</label>
 			<input value={props.text} />
 		</li>

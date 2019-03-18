@@ -33,12 +33,14 @@ import Xss from '../pages/XSS'
 import BindingMethods from '../pages/BindingMethods'
 import Person from '../pages/CreatingFormEle'
 
+import AxiosTest from '../pages/Axios'
+
 import MobX from '../pages/MobX'
 
 import ParentComponent from '../pages/ParentCallChild'
 
 import App from '../pages/ArrayKey'
-import Mood from '../pages/ArrayKey'
+import Mood from '../pages/ArrayKey' // eslint-disable-line no-unused-vars
 
 
 class Interceptors extends React.Component {
@@ -76,6 +78,8 @@ class Interceptors extends React.Component {
           <Route path='/xss' component={Xss} />
           <Route path='/bindingmethods' component={BindingMethods} />
           <Route path='/person' component={Person} />
+
+          <Route path='/axios' component={AxiosTest} />
 
           <Route path='/mobx' component={MobX} />
 

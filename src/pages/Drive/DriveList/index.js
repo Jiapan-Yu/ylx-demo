@@ -31,7 +31,6 @@ export default class DriveList extends Component {
 			const { data } = res.data
 			const { list } = data
 			this.rData = list
-			console.log(list)
 			this.setState({
 				dataSource: this.state.dataSource.cloneWithRows(list),
 				isLoading: false,
@@ -47,7 +46,6 @@ export default class DriveList extends Component {
 			return
 		}
 		pageIndex += 1
-		console.log('reach end', event)
 		this.setState({ isLoading: true })
 		setTimeout(() => {
 			queryDriveList({

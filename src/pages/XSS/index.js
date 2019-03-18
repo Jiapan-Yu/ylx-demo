@@ -24,8 +24,6 @@ const response = [
 // which is injected to the DOM...
 const initialState = JSON.stringify(response);
 
-console.log(initialState)
-
 const removeXSSAttacks = html => {
   const SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi
 

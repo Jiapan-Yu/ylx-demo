@@ -63,7 +63,7 @@ class Person extends Component {
       phone
     }
 
-    console.log('Data:', data)
+    console.log('Data:', data) // eslint-disable-line no-console
   }
 
   render() {

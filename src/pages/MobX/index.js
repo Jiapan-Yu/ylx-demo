@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { observable, action, reaction, when } from 'mobx'
+import { observable, action, when } from 'mobx'
 
 class Inventory {
   @observable items = []
@@ -13,7 +13,7 @@ class Inventory {
         const item = this.items.find(x => x.name === name)
         return item ? item.quantity > 0 : false
       })
-    console.log(`${name} is now available`)
+    // console.log(`${name} is now available`)
   }
 
   @action addItem(name, quantity) {

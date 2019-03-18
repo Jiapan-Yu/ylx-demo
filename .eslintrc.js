@@ -20,5 +20,6 @@ module.exports = {
     // "key-spacing": ["error", { "beforeColon": false }],
     // 不允许使用var
     "no-var": 0,
+    "no-console": 1
   }
 }
