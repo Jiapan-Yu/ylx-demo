@@ -49,5 +49,3 @@ class Coins extends Component {
 }
 
 export default Coins;
-
-

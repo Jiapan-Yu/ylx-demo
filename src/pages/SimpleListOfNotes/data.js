@@ -27,5 +27,3 @@ export const notes2 = [
     content: 'Content for Note 6'
   }
 ];
-
-

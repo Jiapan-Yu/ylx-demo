@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import Popup from 'react-popup'
+import axios from 'axios'
+import { Toast } from 'antd-mobile'
 
 import TodoListIndex from '../pages/ArrayKeys/ArrayKeyIndex';
 import TodoListId from '../pages/ArrayKeys/ArrayKeyId';
@@ -42,8 +44,20 @@ import ParentComponent from '../pages/ParentCallChild'
 import App from '../pages/ArrayKey'
 import Mood from '../pages/ArrayKey' // eslint-disable-line no-unused-vars
 
-
 class Interceptors extends React.Component {
+
+  componentWillMount() {
+    axios.interceptors.request.use(config => {
+      Toast.loading('加载中', 0)
+      return config
+    });
+    
+    axios.interceptors.response.use(response => {
+      Toast.hide()
+      return response
+    });
+  }
+
   render() {
     return (
       <div>

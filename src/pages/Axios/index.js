@@ -9,7 +9,7 @@ class AxiosTest extends Component {
   }
 
   init() {
-    axios({
+    /* axios({
       method: 'post',
       url: 'https://jsonplaceholder.typicode.com/posts',
       responseType: 'json',
@@ -17,7 +17,11 @@ class AxiosTest extends Component {
     })
       .then(response => {
         console.log(response) // eslint-disable-line
-      })
+      }) */
+
+    axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
+      console.log(response); // eslint-disable-line
+    })
   }
 
   render() {
