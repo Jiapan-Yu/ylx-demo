@@ -1,44 +1,41 @@
 import React, { Component } from 'react'
 import { ThemeContext, themes } from './theme-context';
-import ThemedButton from './themed-button';
-
-// An intermediate component that uses the ThemedButton
-function Toolbar(props) {
-  return (
-    <ThemedButton onClick={props.changeTheme}>
-      Change Theme
-    </ThemedButton>
-  )
-}
+import ThemeTogglerButton from './theme-toggler-button'
 
 class ReactContext extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      theme: themes.light,
-    };
+
     this.toggleTheme = () => {
       this.setState(state => ({
         theme: state.theme === themes.dark ? themes.light : themes.dark,
       }));
     };
-  }
 
-  /* toggleTheme = () => {
-    this.setState({
-      theme: this.state.theme === themes.dark ? themes.light : themes.dark
-    });
-  }; */
+    // State also contains the updater function so it will
+    // be passed down into the context provider
+    this.state = {
+      theme: themes.light,
+      toggleTheme: this.toggleTheme,
+    };
+  }
 
   render() {
+    // The entire state is passed to the provider
     return (
-      <div>
-        <ThemeContext.Provider value={this.state.theme}>
-          <Toolbar changeTheme={this.toggleTheme} />
-        </ThemeContext.Provider>
-      </div>
+      <ThemeContext.Provider value={this.state}>
+        <Content />
+      </ThemeContext.Provider>
     )
   }
+}
+
+function Content() {
+  return (
+    <div>
+      <ThemeTogglerButton />
+    </div>
+  )
 }
 
 export default ReactContext;
