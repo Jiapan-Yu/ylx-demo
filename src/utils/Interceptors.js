@@ -37,6 +37,8 @@ import Person from '../pages/CreatingFormEle'
 
 import AxiosTest from '../pages/Axios'
 
+import ReactContext from '../pages/ReactContext'
+
 import MobX from '../pages/MobX'
 
 import ParentComponent from '../pages/ParentCallChild'
@@ -94,6 +96,8 @@ class Interceptors extends React.Component {
           <Route path='/person' component={Person} />
 
           <Route path='/axios' component={AxiosTest} />
+
+          <Route path='/reactcontext' component={ReactContext} />
 
           <Route path='/mobx' component={MobX} />
 
